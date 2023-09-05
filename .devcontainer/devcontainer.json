@@ -1,0 +1,29 @@
+{
+	"name": "EunoiaNexus Dev",
+	"dockerComposeFile": [
+		"./docker-compose.yml"
+	],
+	"runArgs": [
+		"--userns=keep-id:uid=1000,gid=1000",
+		// disable selinux isolation that breaks bind mounts
+		"--security-opt=label=disable"
+	],
+	"service": "eunoianexus_server",
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.vscode-dotnet-runtime",
+				"ms-azuretools.vscode-docker",
+				"csharpier.csharpier-vscode",
+				"fernandoescolar.vscode-solution-explorer",
+				"jmrog.vscode-nuget-package-manager",
+				"patcx.vscode-nuget-gallery",
+				"formulahendry.dotnet-test-explorer",
+				"ckolkman.vscode-postgres"
+			]
+		}
+	},
+	"remoteUser": "root"
+}
