@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  eunoianexus_server:
+    build:
+      context: ../
+      dockerfile: dev/Dockerfile
+    volumes:
+      - ../:/workspace:cached,Z,U
+    command: sleep infinity
+  eunoianexus_postgresql:
+    image: postgres:15.1
+    restart: unless-stopped
+    env_file: ../dev/.env
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  eunoianexus_mail:
+    image: sj26/mailcatcher:latest
+    restart: unless-stopped
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+volumes:
+  postgres_dev_data:
